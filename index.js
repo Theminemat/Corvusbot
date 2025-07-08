@@ -46,7 +46,7 @@ client.on('messageCreate', async (message) => {
   const prompt = `You are connected to a discord bot decide if the message is meant as a greeting or the word morning is just used within the sentence. Reply just with true if it's a greeting or false if it’s not a greeting.\n\nMessage: ${message.content}`;
 
   try {
-    const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=' + GEMINI_API_KEY, {
+    const response = await fetch('https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=' + GEMINI_API_KEY, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({

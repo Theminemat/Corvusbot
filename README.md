@@ -37,6 +37,8 @@ Join the Corvus Coasters Discord to connect with other theme park enthusiasts �
 
 ## 🛠️ Setup & Installation
 
+If you need any help dm me Discorduser: theminemat
+
 ### Prerequisites
 
 - Node.js (v14 or higher)

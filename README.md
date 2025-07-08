@@ -129,11 +129,6 @@ This bot is specifically designed for the Corvus Coasters community. For bug rep
 
 This project is developed for the Corvus Coasters Discord. You are free to modify and use the bot for your own server as described above. Please link to this repo if you do.
 
-## Socials
-
-- 💬 Join the Corvus [Discord server](https://discord.com/invite/3gn79gHbdx)
-- 📺 Check out Corvus [YouTube channel](https://youtube.com/@corvuscoasters?si=5qbsNMQlLxikaCQb) 
-
 ---
 
 <div align="center">

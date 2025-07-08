@@ -24,16 +24,14 @@ Corvusbot is a specialized Discord bot designed for the **Corvus Coasters** serv
 - Displays current member count for community growth tracking
 - Sends helpful DMs to new members with rules and introduction channel links
 
-🤖 **AI-Powered Greeting Detection**
-- Uses advanced AI to detect genuine greetings in messages
-- Automatically reacts with 👋 emoji to authentic greetings
-- Enhances community interaction and friendliness
 
 👮 **Simple Moderation Tools**
 - Provides essential moderation capabilities for server administrators
 - Supports quick content management and user moderation
 - Permission-based access control for security
 
+🤖 **Other features**
+- AI powered greeting detection ads a wave reaction to greetings.
 
 ## 🌐 Community Links
 
@@ -75,6 +73,7 @@ If you need any help dm me Discorduser: theminemat
    TOKEN=your_discord_bot_token_here
    GEMINI_API_KEY=your_gemini_api_key_here
    ```
+   You can get an free gemini api key here: https://aistudio.google.com/app/apikey
 
 4. **Discord Bot Setup**
    - Create a new application at [Discord Developer Portal](https://discord.com/developers/applications)

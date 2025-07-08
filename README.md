@@ -22,6 +22,17 @@ Corvusbot is a specialized Discord bot designed for the **Corvus Coasters** serv
 - Greets new members with personalized welcome messages
 - Generates custom welcome cards with member avatars
 - Displays current member count for community growth tracking
+- Sends helpful DMs to new members with rules and introduction channel links
+
+🤖 **AI-Powered Greeting Detection**
+- Uses advanced AI to detect genuine greetings in messages
+- Automatically reacts with 👋 emoji to authentic greetings
+- Enhances community interaction and friendliness
+
+👮 **Simple Moderation Tools**
+- Provides essential moderation capabilities for server administrators
+- Supports quick content management and user moderation
+- Permission-based access control for security
 
 
 ## 🌐 Community Links
@@ -55,13 +66,14 @@ If you need any help dm me Discorduser: theminemat
 
 2. **Install dependencies**
    ```bash
-   npm install discord.js dotenv
+   npm install discord.js dotenv node-fetch
    ```
 
 3. **Environment Configuration**
    Create a `.env` file in the root directory:
    ```env
    TOKEN=your_discord_bot_token_here
+   GEMINI_API_KEY=your_gemini_api_key_here
    ```
 
 4. **Discord Bot Setup**
@@ -71,8 +83,12 @@ If you need any help dm me Discorduser: theminemat
      - `Send Messages`
      - `Embed Links`
      - `Read Message History`
+     - `Add Reactions`
+     - `Moderate Members`
+     - `Ban Members`
    - Enable the following privileged gateway intents:
      - `Server Members Intent`
+     - `Message Content Intent`
 
 5. **Invite Bot to Server**
    Generate an invite link with the required permissions and add the bot to your Discord server.
@@ -88,6 +104,8 @@ If you need any help dm me Discorduser: theminemat
    - Check console for "✅ Bot started as [BotName]" message
    - Test by having a new member join the Discord server
    - Welcome message should appear in the designated welcome channel
+   - Test AI greeting detection by sending messages with greetings
+   - Verify moderation commands work with appropriate permissions
 
 ## ⚙️ Configuration
 
@@ -98,6 +116,20 @@ The bot is configured to send welcome messages to a specific channel. Update the
 const WELCOME_CHANNEL_ID = 'your_channel_id_here';
 ```
 
+### Role Configuration
+Configure the verified role ID for the role-based messaging system:
+
+```javascript
+const VERIFIED_ROLE_ID = 'your_verified_role_id_here';
+```
+
+### Moderation Configuration
+Whitelist specific users for moderation commands by updating the `WHITELISTED_USERS` array:
+
+```javascript
+const WHITELISTED_USERS = ['user_id_1', 'user_id_2'];
+```
+
 ### Welcome Card Customization
 The welcome card background and styling can be modified by updating the `imageUrl` parameters in the code.
 
@@ -105,12 +137,17 @@ The welcome card background and styling can be modified by updating the `imageUr
 
 - **Runtime**: Node.js
 - **Main Library**: Discord.js v14
-- **External APIs**: Popcat.xyz (for welcome card generation)
+- **External APIs**: 
+  - Popcat.xyz (for welcome card generation)
+  - Google Gemini API (for AI-powered greeting detection)
 - **Environment**: Supports dotenv for configuration management
 
 ### Bot Intents
 - `GatewayIntentBits.Guilds`
 - `GatewayIntentBits.GuildMembers`
+- `GatewayIntentBits.GuildMessages`
+- `GatewayIntentBits.MessageContent`
+- `GatewayIntentBits.DirectMessages`
 
 ## 📋 Requirements
 

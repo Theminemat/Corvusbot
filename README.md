@@ -26,7 +26,8 @@ Corvusbot is a specialized Discord bot designed for the **Corvus Coasters** serv
 
 ## 🌐 Community Links
 
-Join the Corvus Coasters Discord to connect with other Themepark thoosies and check Corvus YouTube channel out!
+Join the Corvus Coasters Discord to connect with other theme park enthusiasts – and don’t forget to check out the Corvus YouTube channel!
+
 
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@corvuscoasters?si=5qbsNMQlLxikaCQb)
 [![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/invite/3gn79gHbdx)
@@ -117,14 +118,14 @@ The welcome card background and styling can be modified by updating the `imageUr
 
 ## 🤝 Contributing
 
-This bot is specifically designed for the Corvus Coasters community. For bug reports or reasonable feature suggestions fitting for the Corvus Discord:
+This bot is specifically designed for the Corvus Coasters community. For bug reports or suggestions that fit the scope of the Corvus Discord:
 
 1. Open an issue on this repository
 2. Submit pull requests for approved changes
 
 ## 📄 License
 
-This project is developed for the Corvus Coasters Discord. You are allowed to modify and use this bot for your own server as explained above. Please link this repo if you use this.
+This project is developed for the Corvus Coasters Discord. You are free to modify and use the bot for your own server as described above. Please link to this repo if you do.
 
 ## Socials
 

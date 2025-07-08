@@ -21,17 +21,12 @@ Corvusbot is a specialized Discord bot designed for the **Corvus Coasters** serv
 🎯 **Automated Welcome System**
 - Greets new members with personalized welcome messages
 - Generates custom welcome cards with member avatars
-- Displays current member count for community growth tracking
+- Displays current member count
 - Sends helpful DMs to new members with rules and introduction channel links
-
-
-👮 **Simple Moderation Tools**
-- Provides essential moderation capabilities for server administrators
-- Supports quick content management and user moderation
-- Permission-based access control for security
 
 🤖 **Other features**
 - AI powered greeting detection ads a wave reaction to greetings.
+- Simple to use moderation commands
 
 ## 🌐 Community Links
 

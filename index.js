@@ -50,6 +50,10 @@ client.on('guildMemberAdd', async (member) => {
   const avatarUrl = member.user.displayAvatarURL({ format: 'png' });
   const imageUrl = `https://api.popcat.xyz/welcomecard?background=https://i.imgur.com/gKnorS3.jpeg&text1=${encodeURIComponent(username)}&text2=Welcome+on+Corvus+Discord&text3=Member+No.+${memberCount}&avatar=${encodeURIComponent(avatarUrl)}`;
 
+  // Log PipcatAPI image link creation
+  console.log(`🖼️ PipcatAPI welcome card generated for ${username} (Member #${memberCount}) at ${new Date().toISOString()}`);
+  console.log(`🔗 Image URL: ${imageUrl}`);
+
   const embed = new EmbedBuilder()
     .setDescription(`👋 Welcome ${username}`)
     .setColor(0x000000)
@@ -112,6 +116,33 @@ client.on('messageCreate', async (message) => {
   } catch (error) {
     console.error('❌ Gemini API error:', error);
   }
+});
+
+// !welcometest command for whitelisted users
+client.on('messageCreate', async (message) => {
+  if (message.content !== '!welcometest') return;
+  if (message.author.bot) return;
+
+  // Check if user is whitelisted
+  if (!WHITELISTED_USERS.includes(message.author.id)) {
+    return message.reply('❌ You are not authorized to use this command.');
+  }
+
+  const username = message.author.username;
+  const memberCount = message.guild.memberCount;
+  const avatarUrl = message.author.displayAvatarURL({ format: 'png' });
+  const imageUrl = `https://api.popcat.xyz/welcomecard?background=https://i.imgur.com/gKnorS3.jpeg&text1=${encodeURIComponent(username)}&text2=Welcome+Test+Banner&text3=Member+No.+${memberCount}&avatar=${encodeURIComponent(avatarUrl)}`;
+
+  // Log PipcatAPI image link creation for test
+  console.log(`🧪 PipcatAPI test welcome card generated for ${username} at ${new Date().toISOString()}`);
+  console.log(`🔗 Test Image URL: ${imageUrl}`);
+
+  const embed = new EmbedBuilder()
+    .setDescription(`🧪 **Welcome Test Banner**\nGenerated for ${username}`)
+    .setColor(0x000000)
+    .setImage(imageUrl);
+
+  message.reply({ embeds: [embed] });
 });
 
 // !delete and !ban logic

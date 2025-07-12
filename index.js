@@ -39,13 +39,26 @@ const WHITELISTED_USERS = ['795259393356333076']; // for moderation actions
 // Bot is ready
 client.once('ready', () => {
   console.log(`✅ Bot started as ${client.user.tag}`);
+  
+  const updateStatus = () => {
+    const guild = client.guilds.cache.get(MAIN_GUILD_ID);
+    if (!guild) return;
 
-  // status
-  client.user.setActivity({
-    name: 'CorvusCoasters',
-    type: ActivityType.Streaming,
-    url: 'https://www.youtube.com/@CorvusCoasters'
-  });
+    const memberCount = guild.memberCount;
+    const activities = [
+      { name: 'Corvus', type: ActivityType.Watching },
+      { name: `${memberCount} People`, type: ActivityType.Listening }
+    ];
+
+    let index = 0;
+    setInterval(() => {
+      client.user.setActivity(activities[index]);
+      index = (index + 1) % activities.length;
+    }, 10000); // status switch
+  };
+
+  // Initial status update
+  updateStatus();
 });
 
 // Welcome
@@ -187,7 +200,7 @@ client.on('messageCreate', async (message) => {
   const channels = guild.channels.cache
     .filter(c => c.type === 0 && c.viewable)
     .map(c => ({ label: c.name, value: c.id }))
-    .slice(0, 25); // Max 25 options
+    .slice(0, 25);
 
   const menu = new StringSelectMenuBuilder()
     .setCustomId('channel_select')
@@ -198,7 +211,7 @@ client.on('messageCreate', async (message) => {
   await message.reply({ content: 'Choose a channel to send to:', components: [row] });
 });
 
-// Channel selected → show modal
+// show form
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isStringSelectMenu() || interaction.customId !== 'channel_select') return;
 

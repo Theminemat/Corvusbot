@@ -12,7 +12,8 @@ const {
   TextInputBuilder,
   TextInputStyle,
   ButtonBuilder,
-  ButtonStyle
+  ButtonStyle,
+  ActivityType
 } = require('discord.js');
 
 const client = new Client({
@@ -38,23 +39,26 @@ const WHITELISTED_USERS = ['795259393356333076']; // for moderation actions
 // Bot is ready
 client.once('ready', () => {
   console.log(`✅ Bot started as ${client.user.tag}`);
+
+  // status
+  client.user.setActivity({
+    name: 'CorvusCoasters',
+    type: ActivityType.Streaming,
+    url: 'https://www.youtube.com/@CorvusCoasters'
+  });
 });
 
-// Welcome embed + DM
+// Welcome
 client.on('guildMemberAdd', async (member) => {
   const channel = member.guild.channels.cache.get(WELCOME_CHANNEL_ID);
   if (!channel) return;
 
   const username = member.user.username;
   const memberCount = member.guild.memberCount;
-  const user = await client.users.fetch(message.author.id);
-  const avatarUrl = user.displayAvatarURL({ extension: 'png' });
+  const avatarUrl = member.user.displayAvatarURL({ format: 'png', dynamic: false });
   const imageUrl = `https://api.popcat.xyz/welcomecard?background=https://i.imgur.com/gKnorS3.jpeg&text1=${encodeURIComponent(username)}&text2=Welcome+on+Corvus+Discord&text3=Member+No.+${memberCount}&avatar=${encodeURIComponent(avatarUrl)}`;
-
-  // Log PipcatAPI image link creation
-  console.log(`🖼️ PipcatAPI welcome card generated for ${username} (Member #${memberCount}) at ${new Date().toISOString()}`);
-  console.log(`🔗 Image URL: ${imageUrl}`);
-
+  console.log(`Card generated for ${username} (Member #${memberCount}) at ${new Date().toISOString()}`);
+  console.log(`Image URL: ${imageUrl}`);
   const embed = new EmbedBuilder()
     .setDescription(`👋 Welcome ${username}`)
     .setColor(0x000000)
@@ -119,23 +123,17 @@ client.on('messageCreate', async (message) => {
   }
 });
 
-// !welcometest command for whitelisted users
+// !welcometest
 client.on('messageCreate', async (message) => {
   if (message.content !== '!welcometest') return;
   if (message.author.bot) return;
-
-  // Check if user is whitelisted
   if (!WHITELISTED_USERS.includes(message.author.id)) {
     return message.reply('❌ You are not authorized to use this command.');
   }
-
   const username = message.author.username;
   const memberCount = message.guild.memberCount;
-  const user = await client.users.fetch(message.author.id);
-  const avatarUrl = user.displayAvatarURL({ extension: 'png' });
+  const avatarUrl = message.author.displayAvatarURL({ format: 'png', dynamic: false });
   const imageUrl = `https://api.popcat.xyz/welcomecard?background=https://i.imgur.com/gKnorS3.jpeg&text1=${encodeURIComponent(username)}&text2=Welcome+Test+Banner&text3=Member+No.+${memberCount}&avatar=${encodeURIComponent(avatarUrl)}`;
-
-  // Log PipcatAPI image link creation for test
   console.log(`🧪 PipcatAPI test welcome card generated for ${username} at ${new Date().toISOString()}`);
   console.log(`🔗 Test Image URL: ${imageUrl}`);
 
@@ -147,7 +145,7 @@ client.on('messageCreate', async (message) => {
   message.reply({ embeds: [embed] });
 });
 
-// !delete and !ban logic
+// !delete/!ban
 client.on('messageCreate', async (message) => {
   if (!['!delete', '!ban'].includes(message.content)) return;
   if (!message.reference) return;
@@ -173,7 +171,7 @@ client.on('messageCreate', async (message) => {
   }
 });
 
-// !send via DM only (channel picker)
+// !send (dm only)
 client.on('messageCreate', async (message) => {
   if (message.channel.type !== 1 || message.content !== '!send') return;
 
@@ -220,7 +218,7 @@ client.on('interactionCreate', async (interaction) => {
   await interaction.showModal(modal);
 });
 
-// Modal submitted → send message
+// form to send messages
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isModalSubmit() || !interaction.customId.startsWith('send_modal:')) return;
 
@@ -246,7 +244,7 @@ client.on('interactionCreate', async (interaction) => {
   });
 });
 
-// Delete button pressed → remove public message
+// Delete button - remove pub. msg
 client.on('interactionCreate', async (interaction) => {
   if (!interaction.isButton() || !interaction.customId.startsWith('delete_msg:')) return;
 

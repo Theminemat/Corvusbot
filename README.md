@@ -104,10 +104,11 @@ If you need any help dm me Discorduser: theminemat
 ## ⚙️ Configuration
 
 ### Channel Configuration
-The bot is configured to send welcome messages to a specific channel. Update the `WELCOME_CHANNEL_ID` in `index.js`:
+The bot is configured to send welcome messages to a specific channel. Update the `WELCOME_CHANNEL_ID` and `MAIN_GUILD_ID`  in `index.js`:
 
 ```javascript
 const WELCOME_CHANNEL_ID = 'your_channel_id_here';
+const MAIN_GUILD_ID = 'your_server_id_here';
 ```
 
 ### Role Configuration

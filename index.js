@@ -47,7 +47,8 @@ client.on('guildMemberAdd', async (member) => {
 
   const username = member.user.username;
   const memberCount = member.guild.memberCount;
-  const avatarUrl = message.author.displayAvatarURL({ extension: 'png' });
+  const user = await client.users.fetch(message.author.id);
+  const avatarUrl = user.displayAvatarURL({ extension: 'png' });
   const imageUrl = `https://api.popcat.xyz/welcomecard?background=https://i.imgur.com/gKnorS3.jpeg&text1=${encodeURIComponent(username)}&text2=Welcome+on+Corvus+Discord&text3=Member+No.+${memberCount}&avatar=${encodeURIComponent(avatarUrl)}`;
 
   // Log PipcatAPI image link creation
@@ -130,7 +131,8 @@ client.on('messageCreate', async (message) => {
 
   const username = message.author.username;
   const memberCount = message.guild.memberCount;
-  const avatarUrl = message.author.displayAvatarURL({ extension: 'png' });
+  const user = await client.users.fetch(message.author.id);
+  const avatarUrl = user.displayAvatarURL({ extension: 'png' });
   const imageUrl = `https://api.popcat.xyz/welcomecard?background=https://i.imgur.com/gKnorS3.jpeg&text1=${encodeURIComponent(username)}&text2=Welcome+Test+Banner&text3=Member+No.+${memberCount}&avatar=${encodeURIComponent(avatarUrl)}`;
 
   // Log PipcatAPI image link creation for test

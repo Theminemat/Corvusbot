@@ -68,13 +68,24 @@ client.on('guildMemberAdd', async (member) => {
 
   const username = member.user.username;
   const memberCount = member.guild.memberCount;
-  const user = await client.users.fetch(message.author.id);
+  const user = await client.users.fetch(member.user.id);
   const avatarUrl = user.displayAvatarURL({ extension: 'png' });
-  const imageUrl = `https://api.popcat.xyz/welcomecard?background=https://i.imgur.com/gKnorS3.jpeg&text1=${encodeURIComponent(username)}&text2=Welcome+on+Corvus+Discord&text3=Member+No.+${memberCount}&avatar=${encodeURIComponent(avatarUrl)}`;
+
+  let imageUrl;
+  let embedDescription;
+  if (memberCount === 2000) {
+    imageUrl = `https://api.popcat.xyz/welcomecard?background=https://i.ibb.co/DdLQScV/Untitled-design-1.png&text1=${encodeURIComponent(username)}&text2=Welcome+on+Corvus+Discord&text3=Member+No.+${memberCount}&avatar=${encodeURIComponent(avatarUrl)}`;
+    embedDescription = `## 🎉 You are the 2000 member 🎉`;
+  } else {
+    imageUrl = `https://api.popcat.xyz/welcomecard?background=https://i.imgur.com/gKnorS3.jpeg&text1=${encodeURIComponent(username)}&text2=Welcome+on+Corvus+Discord&text3=Member+No.+${memberCount}&avatar=${encodeURIComponent(avatarUrl)}`;
+    embedDescription = `👋 Welcome ${username}`;
+  }
+
   console.log(`Card generated for ${username} (Member #${memberCount}) at ${new Date().toISOString()}`);
   console.log(`Image URL: ${imageUrl}`);
+
   const embed = new EmbedBuilder()
-    .setDescription(`👋 Welcome ${username}`)
+    .setDescription(embedDescription)
     .setColor(0x000000)
     .setImage(imageUrl);
 

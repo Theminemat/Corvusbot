@@ -68,7 +68,8 @@ client.on('guildMemberAdd', async (member) => {
 
   const username = member.user.username;
   const memberCount = member.guild.memberCount;
-  const avatarUrl = member.user.displayAvatarURL({ format: 'png', dynamic: false });
+  const user = await client.users.fetch(message.author.id);
+  const avatarUrl = user.displayAvatarURL({ extension: 'png' });
   const imageUrl = `https://api.popcat.xyz/welcomecard?background=https://i.imgur.com/gKnorS3.jpeg&text1=${encodeURIComponent(username)}&text2=Welcome+on+Corvus+Discord&text3=Member+No.+${memberCount}&avatar=${encodeURIComponent(avatarUrl)}`;
   console.log(`Card generated for ${username} (Member #${memberCount}) at ${new Date().toISOString()}`);
   console.log(`Image URL: ${imageUrl}`);
@@ -145,7 +146,8 @@ client.on('messageCreate', async (message) => {
   }
   const username = message.author.username;
   const memberCount = message.guild.memberCount;
-  const avatarUrl = message.author.displayAvatarURL({ format: 'png', dynamic: false });
+  const user = await client.users.fetch(message.author.id);
+  const avatarUrl = user.displayAvatarURL({ extension: 'png' });
   const imageUrl = `https://api.popcat.xyz/welcomecard?background=https://i.imgur.com/gKnorS3.jpeg&text1=${encodeURIComponent(username)}&text2=Welcome+Test+Banner&text3=Member+No.+${memberCount}&avatar=${encodeURIComponent(avatarUrl)}`;
   console.log(`🧪 PipcatAPI test welcome card generated for ${username} at ${new Date().toISOString()}`);
   console.log(`🔗 Test Image URL: ${imageUrl}`);

@@ -36,9 +36,6 @@ Join the Corvus Coasters Discord to connect with other theme park enthusiasts �
 [![YouTube](https://img.shields.io/badge/YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://youtube.com/@corvuscoasters?si=5qbsNMQlLxikaCQb)
 [![Discord](https://img.shields.io/badge/Discord-7289DA?style=for-the-badge&logo=discord&logoColor=white)](https://discord.com/invite/3gn79gHbdx)
 
-- 🎥 **YouTube Channel**: [Corvus Coasters](https://youtube.com/@corvuscoasters?si=5qbsNMQlLxikaCQb)
-- 💬 **Discord Server**: [Join the Server](https://discord.com/invite/3gn79gHbdx)
-
 ## 🛠️ Setup & Installation
 
 If you need any help dm me Discorduser: theminemat
